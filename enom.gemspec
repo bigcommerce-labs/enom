@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.files  = %w( README.md Rakefile LICENSE ) + ["lib/enom.rb"] + Dir.glob("lib/enom/*.rb") + Dir.glob("lib/enom/commands/*.rb") + Dir.glob("test/**/*") + Dir.glob("bin/*")
   s.has_rdoc = false
   s.add_dependency "httparty", "~> 0.15"
-  s.add_dependency "public_suffix", "~> 3.0.0"
+  s.add_dependency "public_suffix", "~> 5.0.0"
   s.add_dependency "activesupport", "> 4.2"
   s.add_development_dependency "test-unit"
   s.add_development_dependency "shoulda", "~> 3.5"
