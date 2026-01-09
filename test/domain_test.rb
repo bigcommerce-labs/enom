@@ -277,6 +277,17 @@ class DomainTest < Test::Unit::TestCase
         should 'return proper auto_renew state' do
           assert @domain.auto_renew?
         end
+
+        context 'when the domain is expired' do
+          setup do
+            @domain.stubs(:expired?).returns(true)
+            @domain.instance_variable_set(:@auto_renew, nil) # Clear cached value
+          end
+
+          should 'always return false for auto_renew?' do
+            assert !@domain.auto_renew?
+          end
+        end
       end
 
       context 'that is currently set to not auto-renew' do
