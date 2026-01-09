@@ -265,15 +265,12 @@ module Enom
     # @return [Boolean]
     #
     def auto_renew?
+      return false if expired? # The GetRenew call fails for expired domains, so just return false
+
       unless defined?(@auto_renew)
-        # GetRenew call will fail if the domain is expired, so check first
-        if expired?
-          @auto_renew = false # Expired domains cannot be set to auto-renew
-        else
-          response = Client.request('Command' => 'GetRenew', 'SLD' => sld, 'TLD' => tld)
-          validate_response!(response)
-          @auto_renew = response['interface_response']['auto_renew'].to_i
-        end
+        response = Client.request('Command' => 'GetRenew', 'SLD' => sld, 'TLD' => tld)
+        validate_response!(response)
+        @auto_renew = response['interface_response']['auto_renew'].to_i
       end
       @auto_renew
     end
