@@ -3,11 +3,9 @@
 A ruby wrapper for the Enom Domain Registrar's API for checking domain name
 availability, domain contact information, name server settings, etc.
 
-```
+```bash
 gem install enom
 ```
-
-[![Build Status](https://secure.travis-ci.org/bensie/enom.png)](http://travis-ci.org/bensie/enom)
 
 Enom provides an API for all of their services, unfortunately it's got hundreds of commands and it's pretty tough to test.  This library aims to make calls to their API trivial and also makes it simple to continually add API commands without much effort.
 
@@ -108,7 +106,7 @@ If you want to use an HTTP proxy server to avoid having to add an IP to the Enom
 (which has been known to be slow/flaky to recognize new IPs), you can set the
 `proxyaddr` client option to point to your proxy server:
 
-```
+```ruby
 Enom::Client.proxyaddr = 'enom-proxy.example.com'
 ```
 
